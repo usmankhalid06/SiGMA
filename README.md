@@ -170,4 +170,4 @@ roster; absolute descriptor magnitudes are encoder- and roster-dependent.
   commit a real key; set it in your shell before running.
 - **Paths.** Each MATLAB script begins with a hard-coded `cd` to a local working
   directory. Edit it to your clone path.
-- **Stage 5 dependencies.** `my_ACSD.m` and `I_CD.m` must be on the MATLAB path.
+- **Stage 5 dependencies.** `my_ACSD.m` must be on the MATLAB path.
