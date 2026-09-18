@@ -1,25 +1,3 @@
-"""
-script_Stage6_mythprone.py
-STAGE 6 - Myth-prone query classifier for the SiGMA router experiment.
-
-Built on the SAME engine as your Stage 1 collection script (OpenAI SDK ->
-OpenRouter, ThreadPoolExecutor, tenacity retries, jsonl-as-it-arrives, resume),
-so it uses the exact call that already works on your account.
-
-Difference from Stage 1: ONE judge model instead of nine, and a YES/NO prompt
-asking whether the QUESTION's topic admits a popular / canonical wrong answer.
-Content-only (sees the question, never the answers or grades) -> non-circular.
-
-For each dataset it reads  <DS>_responses.xlsx  (sheet 'full_answers',
-columns question_id, question) and writes:
-    <DS>_mythprone.jsonl   (incremental, resumable)
-    <DS>_mythprone.xlsx    (final; cols question_id, question, myth_prone, raw)
-The .xlsx is what MATLAB Stage 7 reads.
-
-Run (Anaconda Prompt):
-    set OPENROUTER_API_KEY=sk-or-v1-your-key
-    python script_Stage6_mythprone.py
-"""
 
 import os
 import json
