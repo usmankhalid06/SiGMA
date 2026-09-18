@@ -1,29 +1,3 @@
-%% ============================================================
-%  STAGE 3 — EMBED EVERYTHING IN ONE SHOT  (9 models)
-%
-%  Reads TruthfulQA_responses.xlsx and embeds with all-mpnet-base-v2:
-%    (a) the 9 model raw answers per question  -> emb_raw_mpnet.mat
-%    (b) the question texts                    -> emb_question_mpnet.mat
-%
-%  Output files:
-%
-%  emb_raw_mpnet.mat
-%    Y            : 9x1 cell, each [nQ x 768], L2-normalized per vector
-%    present_mask : 9 x nQ logical   (false where a model had no answer)
-%    meta         : struct with source, models, qids, normalization
-%
-%  emb_question_mpnet.mat
-%    Q            : [nQ x 768], zscore-per-column normalized
-%    qids         : [nQ x 1]
-%    meta         : struct
-%
-%  Model order: {'deepseek','gemini','haiku','qwen','gpt-mini','granite','llama','grok','stepfun'}
-%
-%  NOTE: questions missing a model answer (e.g. stepfun on 271/406) get a
-%  ZERO vector and present_mask=false for that model. Drop those questions in
-%  Stage 4 using present_mask (a zero row is not a unit vector and would
-%  contaminate the cloud measures).
-%% ============================================================
 clear functions
 clear; clc; close all;
 
