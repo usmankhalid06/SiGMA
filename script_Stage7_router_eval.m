@@ -1,15 +1,3 @@
-%% ============================================================
-%  STAGE 7 — Router vs consensus-gate evaluation  (fixed pooled masks)
-%
-%  Consensus-magnitude gate vs a query-type router (myth-prone -> always verify).
-%  On AW clouds the consensus answer is WRONG, so "accept" = dangerous false-accept.
-%
-%  Inputs:
-%     stage4_by_state_<DS>.mat   (state, n_wrong, qids, hamzah = rho, ...)
-%     <DS>_mythprone.xlsx        (question_id, myth_prone)  from Stage 6
-%
-%  Thresholds calibrated on AR only; classifier sees only question text -> non-circular.
-%% ============================================================
 clear; clc;
 cd 'D:\Courses\Postdoc\2026\SIGMA\Matlab Codes';
 
