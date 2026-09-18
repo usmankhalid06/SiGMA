@@ -1,29 +1,3 @@
-"""
-script_pilot.py
-Pilot data collection: query 9 LLMs on TruthfulQA via OpenRouter.
-
-Roster (9 labs): DeepSeek, Google, Anthropic, Alibaba/Qwen, OpenAI, IBM Granite,
-                 Allen AI (OLMo), Meta (Llama), Mistral.
-  - Original 6 already collected; the resume logic skips them, so re-running
-    this only fetches the 3 NEW models x N questions (cheap).
-
-- Loads TruthfulQA from its public CSV (no datasets/pyarrow needed).
-- Saves every response to pilot_responses.jsonl the moment it arrives.
-- Resumes automatically; retries failed/empty answers.
-- Reasoning effort = minimal, sent via extra_body. If a model rejects the
-  reasoning param, the call automatically retries WITHOUT it. (OLMo-Instruct,
-  Llama 4 Scout, and Mistral all fall back cleanly, keeping the run
-  near-deterministic and tier-comparable to the original 6.)
-- AT THE END: writes a readable pilot_responses.xlsx (preview / full_answers / long).
-
-Run (in your clean conda env, Anaconda Prompt):
-    conda activate pilot
-    pip install openpyxl
-    cd /d D:\\Courses\\Postdoc\\2026\\NewMethod
-    set OPENROUTER_API_KEY=sk-or-v1-your-key
-    python script_pilot.py
-"""
-
 import os
 import io
 import json
