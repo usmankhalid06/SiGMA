@@ -1,36 +1,3 @@
-"""
-grade.py  -- STAGE 2 of the Multi-LLM Hallucination Detection pilot.
-
-For each valid (question, model) answer in TruthfulQA_responses.jsonl, makes ONE cheap
-LLM call that does double duty:
-  (a) CLAIM DISTILLATION: collapse the answer into its core propositional claim
-      (strip verbosity / caveats / markdown). This is needed for the
-      raw-vs-claim embedding ablation in Stage 3.
-  (b) STRICT GRADING: label TRUE / FALSE by SEMANTIC alignment to the row's
-      TruthfulQA correct_answers / incorrect_answers reference lists ONLY
-      (the grader does not freelance with its own world knowledge).
-
-Then computes, from the graded results:
-  - per-model correctness
-  - consortium label  y_q = 1  if 4+ of the AVAILABLE models for that question
-    are WRONG  (Q421 has 5 available, everything else 6).
-
-Robustness mirrors script_pilot.py:
-  - reads TruthfulQA_responses.jsonl (RAW FILE IS SACRED -- never written to)
-  - incremental save + RESUME to grades.jsonl  (only successfully-graded
-    (qid, model) pairs count as done, so anything else gets retried on re-run)
-  - tenacity retries, CONCURRENCY=8, raises on empty -> triggers retry
-  - reasoning-minimal with no-reasoning fallback (gpt-mini rejects the param)
-  - cost cap guard
-
-Run from Anaconda Prompt (NOT Spyder), in the folder that holds this script
-AND TruthfulQA_responses.jsonl:
-    conda activate pilot
-    set OPENROUTER_API_KEY=sk-or-v1-...
-    python grade.py
-Re-running resumes; it will not re-grade rows already in grades.jsonl.
-"""
-
 import os
 import json
 import threading
