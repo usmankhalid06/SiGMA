@@ -60,7 +60,7 @@ scarcity-check pilot.
   and `quantile`).
 - A Python environment with `sentence-transformers` installed and reachable from
   MATLAB (Stage 3 calls it through the Python bridge).
-- Stage 5 additionally requires `my_ACSD.m` and `I_CD.m` on the MATLAB path.
+- Stage 5 additionally requires `my_ACSD.m` on the MATLAB path.
 - Stage 7 reads the Stage 4 `.mat` files and the Stage 6 `<DATASET>_mythprone.xlsx`
   files; no extra toolbox beyond the above.
 
@@ -230,6 +230,6 @@ operationalized, not a calibrated production solution.
   environment. Do not commit a real key; set it in your shell before running.
 - **Paths.** Each MATLAB script begins with a hard-coded `cd` to a local working
   directory. Edit it to your clone path.
-- **Stage 5 dependencies.** `my_ACSD.m` and `I_CD.m` must be on the MATLAB path.
+- **Stage 5 dependencies.** `my_ACSD.m` must be on the MATLAB path.
 - **Stage 7 filename.** If the script is saved as `scrtip_Stage7_router_eval.m`
   (a typo), rename it to `script_Stage7_router_eval.m` to match this README.
